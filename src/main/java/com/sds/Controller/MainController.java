@@ -64,7 +64,8 @@ import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+@CrossOrigin(origins = "*")
+
 public class MainController {
 
     @Autowired
