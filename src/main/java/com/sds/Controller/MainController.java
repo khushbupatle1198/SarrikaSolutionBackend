@@ -64,7 +64,7 @@ import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://56.228.29.155")
+@CrossOrigin(origins = "https://www.sarrikasdivinesolution.com")
 
 public class MainController {
 
