@@ -64,7 +64,8 @@
                 <directory>src/main/resources</directory>
                 <filtering>false</filtering>
             </resource>
-            <!-- Copy .env file into target/classes -->
+
+            <!-- Copy .env from root to target/classes (and into JAR) -->
             <resource>
                 <directory>${project.basedir}</directory>
                 <includes>
@@ -99,5 +100,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
