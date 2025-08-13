@@ -56,48 +56,48 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+<build>
+    <resources>
+        <!-- Regular resources -->
+        <resource>
+            <directory>src/main/resources</directory>
+            <filtering>false</filtering>
+        </resource>
 
-    <build>
-        <resources>
-            <!-- Main resources -->
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-            </resource>
+        <!-- Copy .env from project root to target/classes -->
+        <resource>
+            <directory>${project.basedir}</directory>
+            <includes>
+                <include>.env</include>
+            </includes>
+            <targetPath>${project.build.outputDirectory}</targetPath>
+            <filtering>false</filtering>
+        </resource>
+    </resources>
 
-            <!-- Copy .env from root to target/classes (and into JAR) -->
-            <resource>
-                <directory>${project.basedir}</directory>
-                <includes>
-                    <include>.env</include>
-                </includes>
-                <targetPath>${project.build.outputDirectory}</targetPath>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.11.0</version>
+            <configuration>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+            </configuration>
+        </plugin>
 
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
 
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>
